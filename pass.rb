@@ -8,11 +8,10 @@ def generate_pass(length, digits, caps, syms)
 
   rnd = Random.new(Time.now.to_i)
 
-  caps.times   { pass << (65 + rnd.rand(26)) }
+  rest.times   { pass << (97 + rnd.rand(26)) }
   digits.times { pass << rnd.rand(10).to_s }
+  caps.times   { pass << (65 + rnd.rand(26)) }
   syms.times   { pass << symbols.sample }
-
-  (length - pass.length).times { pass << (97 + rnd.rand(26)) }
 
   pass.chars.shuffle.join
 end
